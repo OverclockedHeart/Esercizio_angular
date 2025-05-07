@@ -1,0 +1,33 @@
+<div class="form-container">
+  <h2>Registrazione</h2>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>Email</label>
+    <input type="email" formControlName="email" />
+    <div
+      class="error"
+      *ngIf="form.get('email')?.invalid && form.get('email')?.touched"
+    >
+      Inserisci un'email valida
+    </div>
+
+    <label>Password</label>
+    <input type="password" formControlName="password" />
+    <div
+      class="error"
+      *ngIf="form.get('password')?.invalid && form.get('password')?.touched"
+    >
+      La password deve contenere almeno 8 caratteri
+    </div>
+
+    <label>Data di nascita</label>
+    <input type="date" formControlName="birthDate" />
+    <div
+      class="error"
+      *ngIf="form.get('birthDate')?.invalid && form.get('birthDate')?.touched"
+    >
+      Data di nascita richiesta
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Invia</button>
+  </form>
+</div>
